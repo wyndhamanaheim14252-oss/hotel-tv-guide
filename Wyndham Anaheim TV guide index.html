@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f5d75">
+  <title>TV Channel Guide | Wyndham Anaheim</title>
+  <style>
+    :root {
+      --brand:#0f5d75;
+      --brand2:#137a9b;
+      --bg:#f5f7f9;
+      --card:#ffffff;
+      --text:#1f2937;
+      --muted:#667085;
+      --line:#dbe3e8;
+    }
+    * { box-sizing:border-box; }
+    body {
+      margin:0; font-family:Arial,Helvetica,sans-serif; background:var(--bg); color:var(--text);
+    }
+    header {
+      background:linear-gradient(135deg,var(--brand),var(--brand2));
+      color:#fff; padding:28px 18px 24px; text-align:center;
+    }
+    header h1 { margin:0 0 6px; font-size:28px; }
+    header p { margin:0; opacity:.92; }
+    main { max-width:900px; margin:0 auto; padding:18px; }
+    .search-wrap {
+      position:sticky; top:0; z-index:5; background:var(--bg); padding:10px 0 12px;
+    }
+    .search {
+      width:100%; font-size:18px; padding:14px 16px; border:1px solid var(--line);
+      border-radius:12px; background:#fff; outline:none;
+    }
+    .search:focus { border-color:var(--brand2); box-shadow:0 0 0 3px rgba(19,122,155,.12); }
+    .hint { font-size:13px; color:var(--muted); margin:8px 2px 0; }
+    .card {
+      background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden;
+    }
+    table { width:100%; border-collapse:collapse; }
+    thead th {
+      text-align:left; background:#eef5f7; color:#354052; padding:12px 14px; font-size:14px;
+      border-bottom:1px solid var(--line);
+    }
+    tbody td { padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:middle; }
+    tbody tr:last-child td { border-bottom:0; }
+    tbody tr:nth-child(even) { background:#fbfdfe; }
+    .ch { width:86px; font-size:20px; font-weight:700; color:var(--brand); }
+    .pkg { width:120px; color:var(--muted); font-size:13px; }
+    .empty { display:none; text-align:center; padding:28px; color:var(--muted); }
+    .actions { text-align:center; margin:18px 0 8px; }
+    .btn {
+      display:inline-block; text-decoration:none; color:#fff; background:var(--brand);
+      padding:12px 16px; border-radius:10px; font-weight:700;
+    }
+    footer { text-align:center; color:var(--muted); font-size:13px; padding:20px 10px 30px; }
+    @media (max-width:600px) {
+      header h1 { font-size:24px; }
+      main { padding:12px; }
+      thead .pkg-head, td.pkg { display:none; }
+      tbody td { padding:11px 10px; }
+      .ch { width:68px; font-size:19px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TV Channel Guide</h1>
+    <p>Wyndham Anaheim</p>
+  </header>
+
+  <main>
+    <div class="search-wrap">
+      <input id="search" class="search" type="search"
+             placeholder="Search channel, network, or number..."
+             aria-label="Search TV channels">
+      <div class="hint">Example: ESPN, Disney, CNN, 109</div>
+    </div>
+
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>Channel</th>
+            <th>Network</th>
+            <th class="pkg-head">Package</th>
+          </tr>
+        </thead>
+        <tbody id="channelRows">
+          <tr data-search="hotel hotel hotel channel 1"><td class="ch">1</td><td>HOTEL CHANNEL</td><td class="pkg">HOTEL</td></tr>
+<tr data-search="locals guidelo guide los angeles ca local clu 3"><td class="ch">3</td><td>Guide LOS ANGELES CA Local CLU</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals spcnews spectrum news 4"><td class="ch">4</td><td>Spectrum News</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals abc kabc hd 6"><td class="ch">6</td><td>KABC HD</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals abc2 kabc 2 localish 7"><td class="ch">7</td><td>KABC 2 Localish</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals cbs kcbs cbs 8"><td class="ch">8</td><td>KCBS CBS</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals cbs2 kcbs 2 start 9"><td class="ch">9</td><td>KCBS 2 Start</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals fox kttv fox 10"><td class="ch">10</td><td>KTTV FOX</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals nbc knbc nbc 12"><td class="ch">12</td><td>KNBC NBC</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals cw ktla cw 14"><td class="ch">14</td><td>KTLA CW</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals cw2 ktla 2 antenna tv 15"><td class="ch">15</td><td>KTLA 2 Antenna TV</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals pbs koce pbs 16"><td class="ch">16</td><td>KOCE PBS</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals pbs2 koce 2 socal 17"><td class="ch">17</td><td>KOCE 2 SoCal</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals ion kpxn ion 36"><td class="ch">36</td><td>KPXN ION</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals metv kaza metv 37"><td class="ch">37</td><td>KAZA MeTV</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals mynet kcop mytv 38"><td class="ch">38</td><td>KCOP MyTV</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals cozi knbc 2 cozi tv 39"><td class="ch">39</td><td>KNBC 2 Cozi TV</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals d2 kcal ind 40"><td class="ch">40</td><td>KCAL IND</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals telem kvea telemundo 41"><td class="ch">41</td><td>KVEA Telemundo</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals unimas kftr unimas 42"><td class="ch">42</td><td>KFTR UniMas</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals unv kmex univision 43"><td class="ch">43</td><td>KMEX Univision</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals dystr koce 3 daystar 44"><td class="ch">44</td><td>KOCE 3 Daystar</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals tbn ktbn tbn 45"><td class="ch">45</td><td>KTBN TBN</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals d2 kcop 2 buzzr 46"><td class="ch">46</td><td>KCOP 2 Buzzr</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals d2 kftr 2 gettv 47"><td class="ch">47</td><td>KFTR 2 getTV</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals d2 kvea 2 telexitos 48"><td class="ch">48</td><td>KVEA 2 TeleXitos</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals kdoc tct 49"><td class="ch">49</td><td>TCT</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals rsn bally sports socal 51"><td class="ch">51</td><td>Bally Sports SoCal</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals rsn bally sports west 52"><td class="ch">52</td><td>Bally Sports West</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals rsn spectrum sportsnet 53"><td class="ch">53</td><td>Spectrum SportsNet</td><td class="pkg">Locals</td></tr>
+<tr data-search="locals rsn spectrum sportsnet la 54"><td class="ch">54</td><td>Spectrum SportsNet LA</td><td class="pkg">Locals</td></tr>
+<tr data-search="deluxe guided1 deluxe guide 1 57"><td class="ch">57</td><td>DELUXE GUIDE 1</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe usa usa network 58"><td class="ch">58</td><td>USA NETWORK</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe aetv ae 59"><td class="ch">59</td><td>AE</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe tnt tnt 60"><td class="ch">60</td><td>TNT</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe tbs tbs 61"><td class="ch">61</td><td>TBS</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe amc amc 62"><td class="ch">62</td><td>AMC</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe dsc discovery 63"><td class="ch">63</td><td>DISCOVERY</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe history history 64"><td class="ch">64</td><td>HISTORY</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe fx fx 65"><td class="ch">65</td><td>FX</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe bbca bbc america 66"><td class="ch">66</td><td>BBC AMERICA</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe syfy syfy 67"><td class="ch">67</td><td>SYFY</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe trutv tru tv 68"><td class="ch">68</td><td>TRU TV</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe comedy comedy central 69"><td class="ch">69</td><td>COMEDY CENTRAL</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe par paramount 70"><td class="ch">70</td><td>PARAMOUNT</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe vh1 vh1 71"><td class="ch">71</td><td>VH1</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe mtv mtv 72"><td class="ch">72</td><td>MTV</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe tvland tv land 73"><td class="ch">73</td><td>TV LAND</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe hall hallmark channel 75"><td class="ch">75</td><td>HALLMARK CHANNEL</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe ngc national geographic 76"><td class="ch">76</td><td>NATIONAL GEOGRAPHIC</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe apl animal planet 77"><td class="ch">77</td><td>ANIMAL PLANET</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe science science 78"><td class="ch">78</td><td>SCIENCE</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe ahc ahc 79"><td class="ch">79</td><td>AHC</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe hgtv hgtv 80"><td class="ch">80</td><td>HGTV</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe food food network 81"><td class="ch">81</td><td>FOOD NETWORK</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe trav travel channel 82"><td class="ch">82</td><td>TRAVEL CHANNEL</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe tlc tlc 83"><td class="ch">83</td><td>TLC</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe bravo bravo 84"><td class="ch">84</td><td>BRAVO</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe e! e! 85"><td class="ch">85</td><td>E!</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe life lifetime 86"><td class="ch">86</td><td>LIFETIME</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe own own 87"><td class="ch">87</td><td>OWN</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe bet bet 88"><td class="ch">88</td><td>BET</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe ovation ovation tv 89"><td class="ch">89</td><td>OVATION TV</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe cnn cnn 90"><td class="ch">90</td><td>CNN</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe fnc fox news 91"><td class="ch">91</td><td>FOX NEWS</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe msnbc msnbc 92"><td class="ch">92</td><td>MSNBC</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe hln hln 93"><td class="ch">93</td><td>HLN</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe cnbc cnbc 94"><td class="ch">94</td><td>CNBC</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe fbn fox business network 95"><td class="ch">95</td><td>FOX BUSINESS NETWORK</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe bloom bloomberg 96"><td class="ch">96</td><td>BLOOMBERG</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe weath weather channel 97"><td class="ch">97</td><td>WEATHER CHANNEL</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe cspan c-span 98"><td class="ch">98</td><td>C-SPAN</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe disn disney channel 99"><td class="ch">99</td><td>DISNEY CHANNEL</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe boom boomerang 100"><td class="ch">100</td><td>BOOMERANG</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe ukids universal kids 102"><td class="ch">102</td><td>UNIVERSAL KIDS</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe nickjr nick jr 103"><td class="ch">103</td><td>NICK JR</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe nick nickelodeon 104"><td class="ch">104</td><td>NICKELODEON</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe toon cartoon network 105"><td class="ch">105</td><td>CARTOON NETWORK</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe dfc discovery family 106"><td class="ch">106</td><td>DISCOVERY FAMILY</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe cmt cmt 107"><td class="ch">107</td><td>CMT</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe gacf gac family 108"><td class="ch">108</td><td>GAC FAMILY</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe espn espn 109"><td class="ch">109</td><td>ESPN</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe espn2 espn2 110"><td class="ch">110</td><td>ESPN2</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe guided2 deluxe guide 2 111"><td class="ch">111</td><td>DELUXE GUIDE 2</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe tnf thursday night football 112"><td class="ch">112</td><td>THURSDAY NIGHT FOOTBALL</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe sec sec network 113"><td class="ch">113</td><td>SEC NETWORK</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe fs1 fox sports 1 114"><td class="ch">114</td><td>FOX SPORTS 1</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe fs2 fox sports 2 115"><td class="ch">115</td><td>FOX SPORTS 2</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe mt motortrend 116"><td class="ch">116</td><td>MOTORTREND</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe tcm tcm 117"><td class="ch">117</td><td>TCM</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe hsn hsn 118"><td class="ch">118</td><td>HSN</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe ewtn ewtn 119"><td class="ch">119</td><td>EWTN</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe shophq shop hq 120"><td class="ch">120</td><td>SHOP HQ</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe qvc qvc 121"><td class="ch">121</td><td>QVC</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe cnne cnn en espanol 122"><td class="ch">122</td><td>CNN EN ESPANOL</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe nn news nation 123"><td class="ch">123</td><td>NEWS NATION</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe mtv2 mtv2 124"><td class="ch">124</td><td>MTV2</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe mtvclas mtv classic rock 125"><td class="ch">125</td><td>MTV CLASSIC ROCK</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe up up 126"><td class="ch">126</td><td>UP</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe smith smithsonian channel 128"><td class="ch">128</td><td>SMITHSONIAN CHANNEL</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe vice viceland 129"><td class="ch">129</td><td>VICELAND</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe fyi fyi 130"><td class="ch">130</td><td>FYI</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe dest destination america 131"><td class="ch">131</td><td>DESTINATION AMERICA</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe id investigation discovery 132"><td class="ch">132</td><td>INVESTIGATION DISCOVERY</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe acuwthr accuweather 133"><td class="ch">133</td><td>ACCUWEATHER</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe cook cooking channel 134"><td class="ch">134</td><td>COOKING CHANNEL</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe oxygen oxygen 135"><td class="ch">135</td><td>OXYGEN</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe we we tv 136"><td class="ch">136</td><td>WE TV</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe pop pop 137"><td class="ch">137</td><td>POP</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe gsn game show network w 138"><td class="ch">138</td><td>GAME SHOW NETWORK W</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe logo logo 139"><td class="ch">139</td><td>LOGO</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe dlc discovery life 140"><td class="ch">140</td><td>DISCOVERY LIFE</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe bher bet her 141"><td class="ch">141</td><td>BET HER</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe tvone tv one 142"><td class="ch">142</td><td>TV ONE</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe bbcwld bbc world news 143"><td class="ch">143</td><td>BBC WORLD NEWS</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe nikton nicktoons 144"><td class="ch">144</td><td>NICKTOONS</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe tnck teennick 145"><td class="ch">145</td><td>TEENNICK</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe mtvlive mtv live 147"><td class="ch">147</td><td>MTV LIVE</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe rvlt revolt 148"><td class="ch">148</td><td>REVOLT</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe fuse fuse 149"><td class="ch">149</td><td>FUSE</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe insp insp 150"><td class="ch">150</td><td>INSP</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe sundanc sundancetv 151"><td class="ch">151</td><td>SUNDANCETV</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe lmn lmn 154"><td class="ch">154</td><td>LMN</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe ifc ifc 155"><td class="ch">155</td><td>IFC</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe hmm hallmark movies 156"><td class="ch">156</td><td>HALLMARK MOVIES</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe betsoul bet soul 157"><td class="ch">157</td><td>BET SOUL</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe pac12 pac-12 network 158"><td class="ch">158</td><td>PAC-12 NETWORK</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe byutv byu tv 159"><td class="ch">159</td><td>BYU TV</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe impcnet impact network 161"><td class="ch">161</td><td>IMPACT NETWORK</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe magn magnolia network 162"><td class="ch">162</td><td>MAGNOLIA NETWORK</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe newsmx newsmax tv 164"><td class="ch">164</td><td>NEWSMAX TV</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe bigten big ten / btn 165"><td class="ch">165</td><td>BIG TEN / BTN</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="deluxe acc acc network 166"><td class="ch">166</td><td>ACC NETWORK</td><td class="pkg">Deluxe</td></tr>
+<tr data-search="sports pass guidesp sports pass guide 174"><td class="ch">174</td><td>SPORTS PASS GUIDE</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass bein bein sports 175"><td class="ch">175</td><td>BEIN SPORTS</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass cbssn cbs sports 177"><td class="ch">177</td><td>CBS SPORTS</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass espnd espn deportes 187"><td class="ch">187</td><td>ESPN DEPORTES</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass espnews espn news 189"><td class="ch">189</td><td>ESPN NEWS</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass espnu espnu 190"><td class="ch">190</td><td>ESPNU</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass fxdep fox deportes 191"><td class="ch">191</td><td>FOX DEPORTES</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass golf golf channel 196"><td class="ch">196</td><td>GOLF CHANNEL</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass mlbn mlb network 197"><td class="ch">197</td><td>MLB NETWORK</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass mlbnsz mlb strike zone 198"><td class="ch">198</td><td>MLB STRIKE ZONE</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass nbatv nba tv 199"><td class="ch">199</td><td>NBA TV</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass nflnet nfl network 200"><td class="ch">200</td><td>NFL NETWORK</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass nflnrz nfl redzone 201"><td class="ch">201</td><td>NFL REDZONE</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass nhlnet nhl network 202"><td class="ch">202</td><td>NHL NETWORK</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass oly the olympic channel 203"><td class="ch">203</td><td>THE OLYMPIC CHANNEL</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass outd outdoor channel 204"><td class="ch">204</td><td>OUTDOOR CHANNEL</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass pac12az pac-12 arizona 205"><td class="ch">205</td><td>PAC-12 ARIZONA</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass pac12ba pac-12 bay area 206"><td class="ch">206</td><td>PAC-12 BAY AREA</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass pac12la pac-12 los angeles 207"><td class="ch">207</td><td>PAC-12 LOS ANGELES</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass pac12mt pac-12 mountain 208"><td class="ch">208</td><td>PAC-12 MOUNTAIN</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass pac12or pac-12 oregon 209"><td class="ch">209</td><td>PAC-12 OREGON</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass pac12wa pac-12 washington 210"><td class="ch">210</td><td>PAC-12 WASHINGTON</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass sec2 sec alternate 211"><td class="ch">211</td><td>SEC ALTERNATE</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass tennis tennis channel 212"><td class="ch">212</td><td>TENNIS CHANNEL</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass tvg tvg 213"><td class="ch">213</td><td>TVG</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass tudn tudn 214"><td class="ch">214</td><td>TUDN</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="sports pass willow willow cricket 215"><td class="ch">215</td><td>WILLOW CRICKET</td><td class="pkg">Sports Pass</td></tr>
+<tr data-search="showtime guidesh showtime guide 269"><td class="ch">269</td><td>SHOWTIME GUIDE</td><td class="pkg">Showtime</td></tr>
+<tr data-search="showtime show showtime 270"><td class="ch">270</td><td>SHOWTIME</td><td class="pkg">Showtime</td></tr>
+<tr data-search="showtime sho2 showtime 2 271"><td class="ch">271</td><td>SHOWTIME 2</td><td class="pkg">Showtime</td></tr>
+<tr data-search="showtime shocse showtime showcase 272"><td class="ch">272</td><td>SHOWTIME SHOWCASE</td><td class="pkg">Showtime</td></tr>
+<tr data-search="showtime shoxbet showtime xbet 273"><td class="ch">273</td><td>SHOWTIME xBET</td><td class="pkg">Showtime</td></tr>
+<tr data-search="showtime shox showtime extreme 274"><td class="ch">274</td><td>SHOWTIME EXTREME</td><td class="pkg">Showtime</td></tr>
+<tr data-search="showtime next showtime next 275"><td class="ch">275</td><td>SHOWTIME NEXT</td><td class="pkg">Showtime</td></tr>
+<tr data-search="showtime women showtime women 276"><td class="ch">276</td><td>SHOWTIME WOMEN</td><td class="pkg">Showtime</td></tr>
+        </tbody>
+      </table>
+      <div id="empty" class="empty">No matching channels found.</div>
+    </div>
+
+    <div class="actions">
+      <a class="btn" href="TV_Channel_Guide%20-%20Complete%20Guide.pdf">View PDF Version</a>
+    </div>
+  </main>
+
+  <footer>
+    Channel availability is subject to change. For assistance, please contact the Front Desk.
+  </footer>
+
+  <script>
+    const input = document.getElementById('search');
+    const rows = [...document.querySelectorAll('#channelRows tr')];
+    const empty = document.getElementById('empty');
+
+    function filterRows() {
+      const q = input.value.trim().toLowerCase();
+      let shown = 0;
+      rows.forEach(row => {
+        const match = !q || row.dataset.search.includes(q);
+        row.style.display = match ? '' : 'none';
+        if (match) shown++;
+      });
+      empty.style.display = shown ? 'none' : 'block';
+    }
+
+    input.addEventListener('input', filterRows);
+  </script>
+</body>
+</html>
